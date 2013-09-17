@@ -4,6 +4,7 @@ public class Bishop extends Piece {
 
 	@Override
 	public boolean isValidPosition(Position p, Board b) {
+		//Testing
 		Position p2 = new Position();
 		p2.x = this.position.x;
 		p2.y = this.position.y;

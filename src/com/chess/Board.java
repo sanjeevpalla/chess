@@ -5,6 +5,7 @@ public class Board {
 	boolean isBlacksTurn;
 
 	public Piece getPiece(Position p) {
+		//Another
 		for (int i = 0; i < pieces.length; i++) {
 			if (pieces[i].position.x == p.x && pieces[i].position.y == p.y)
 				return pieces[i];
