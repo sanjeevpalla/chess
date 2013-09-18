@@ -5,11 +5,12 @@ public class Minister extends Piece {
 	@Override
 	public boolean isValidPosition(Position p, Board b) {
 		Position p2 = new Position();
-		p2.x = this.position.x;
-		p2.y = this.position.y;
-		Position p1 = getDifference(p, this.position);
+		p2.x = this.getPosition().x;
+		p2.y = this.getPosition().y;
+		Position p1 = getDifference(p, this.getPosition());
 		Piece pp = b.getPiece(p);
-		if (pp != null && pp.color == this.color) {
+		if (pp != null && pp.getColor() == this.getColor()) {
+
 			return false;
 		}
 		if (p1.x == 0 && p1.y == 0) {

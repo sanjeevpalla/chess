@@ -1,116 +1,127 @@
 package com.chess;
 
 public class Board {
-	Piece pieces[];
-	boolean isBlacksTurn;
+	Piece pieces[] = new Piece[32];
+	boolean isBlacksTurn = false;
 
 	public Piece getPiece(Position p) {
-		//Another
 		for (int i = 0; i < pieces.length; i++) {
-			if (pieces[i].position.x == p.x && pieces[i].position.y == p.y)
+			if (pieces[i].getPosition().x == p.x
+					&& pieces[i].getPosition().y == p.y && pieces[i].isAlive())
+
 				return pieces[i];
 		}
 		return null;
 	}
 
+	public Board() {
+		start();
+		
+
+	}
+
+
 	public void start() {
 		int i = 0;
 		for (; i < 8; i++) {
 			pieces[i] = new Pawn();
-			pieces[i].color = Color.WHITE;
-			pieces[i].alive = true;
-			pieces[i].position.y = 2;
-			pieces[i].position.x = i + 1;
+			pieces[i].setColor(Color.WHITE);
+			pieces[i].setAlive(true);
+			pieces[i].setPosition(new Position(i, 6));
+			
+			
 
 		}
+
 		for (; i < 16; i++) {
 			pieces[i] = new Pawn();
-			pieces[i].color = Color.BLACK;
-			pieces[i].alive = true;
-			pieces[i].position.y = 7;
-			pieces[i].position.x = i - 7;
-
+			pieces[i].setColor(Color.BLACK);
+			pieces[i].setAlive(true);
+			pieces[i].setPosition(new Position(i - 8, 1));
+			
 		}
 		for (; i < 18; i++) {
 			pieces[i] = new Rook();
-			pieces[i].color = Color.WHITE;
-			pieces[i].alive = true;
-			pieces[i].position.y = 1;
+			pieces[i].setColor(Color.WHITE);
+			pieces[i].setAlive(true);
+
 		}
 
 		for (; i < 20; i++) {
 			pieces[i] = new Rook();
-			pieces[i].color = Color.BLACK;
-			pieces[i].alive = true;
-			pieces[i].position.y = 8;
+			pieces[i].setColor(Color.BLACK);
+			pieces[i].setAlive(true);
+
 
 		}
-
-		pieces[16].position.x = 1;
-		pieces[17].position.x = 8;
-		pieces[18].position.x = 1;
-		pieces[19].position.x = 8;
+		pieces[16].setPosition(new Position(0, 7));
+		pieces[17].setPosition(new Position(7, 7));
+		pieces[18].setPosition(new Position(0, 0));
+		pieces[19].setPosition(new Position(7, 0));
 
 		for (; i < 22; i++) {
 			pieces[i] = new Knight();
-			pieces[i].color = Color.WHITE;
-			pieces[i].alive = true;
-			pieces[i].position.y = 1;
+			pieces[i].setColor(Color.WHITE);
+			pieces[i].setAlive(true);
+
 		}
 
 		for (; i < 24; i++) {
 			pieces[i] = new Knight();
-			pieces[i].color = Color.BLACK;
-			pieces[i].alive = true;
-			pieces[i].position.y = 8;
+
+			pieces[i].setColor(Color.BLACK);
+			pieces[i].setAlive(true);
+
 		}
 
-		pieces[20].position.x = 2;
-		pieces[21].position.x = 7;
-		pieces[22].position.x = 2;
-		pieces[23].position.x = 7;
+		pieces[20].setPosition(new Position(1, 7));
+		pieces[21].setPosition(new Position(6, 7));
+		pieces[22].setPosition(new Position(1, 0));
+		pieces[23].setPosition(new Position(6, 0));
 
 		for (; i < 26; i++) {
 			pieces[i] = new Bishop();
-			pieces[i].color = Color.WHITE;
-			pieces[i].alive = true;
-			pieces[i].position.y = 1;
+			pieces[i].setColor(Color.WHITE);
+			pieces[i].setAlive(true);
 		}
 		for (; i < 28; i++) {
 			pieces[i] = new Bishop();
-			pieces[i].color = Color.BLACK;
-			pieces[i].alive = true;
-			pieces[i].position.y = 8;
+			pieces[i].setColor(Color.BLACK);
+			pieces[i].setAlive(true);
+
 		}
 
-		pieces[24].position.x = 3;
-		pieces[25].position.x = 6;
-		pieces[26].position.x = 3;
-		pieces[27].position.x = 6;
+		pieces[24].setPosition(new Position(2, 7));
+		pieces[25].setPosition(new Position(5, 7));
+		pieces[26].setPosition(new Position(2, 0));
+		pieces[27].setPosition(new Position(5, 0));
 
 		pieces[i] = new Minister();
-		pieces[i].color = Color.WHITE;
-		pieces[i].alive = true;
-		pieces[i].position.x = 4;
-		pieces[i].position.y = 1;
+		pieces[i].setColor(Color.WHITE);
+		pieces[i].setAlive(true);
+		pieces[i].setPosition(new Position(3, 7));
+
 		i++;
 		pieces[i] = new Minister();
-		pieces[i].color = Color.BLACK;
-		pieces[i].alive = true;
-		pieces[i].position.x = 4;
-		pieces[i].position.y = 8;
-		i++;
-		pieces[i] = new King();
-		pieces[i].color = Color.WHITE;
-		pieces[i].alive = true;
-		pieces[i].position.x = 5;
-		pieces[i].position.y = 1;
-		i++;
-		pieces[i] = new King();
-		pieces[i].color = Color.BLACK;
-		pieces[i].alive = true;
-		pieces[i].position.x = 5;
-		pieces[i].position.y = 8;
+		pieces[i].setColor(Color.BLACK);
+		pieces[i].setAlive(true);
+		pieces[i].setPosition(new Position(3, 0));
 
+		i++;
+		pieces[i] = new King();
+		pieces[i].setColor(Color.WHITE);
+		pieces[i].setAlive(true);
+		pieces[i].setPosition(new Position(4, 7));
+
+		i++;
+		pieces[i] = new King();
+		pieces[i].setColor(Color.BLACK);
+		pieces[i].setAlive(true);
+		pieces[i].setPosition(new Position(4, 0));
+
+	}
+
+	public Piece[] getPieces() {
+		return pieces;
 	}
 }

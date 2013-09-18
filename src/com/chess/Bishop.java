@@ -4,13 +4,13 @@ public class Bishop extends Piece {
 
 	@Override
 	public boolean isValidPosition(Position p, Board b) {
-		//Testing
 		Position p2 = new Position();
-		p2.x = this.position.x;
-		p2.y = this.position.y;
-		Position p1 = getDifference(p, this.position);
+
+		p2.x = this.getPosition().x;
+		p2.y = this.getPosition().y;
+		Position p1 = getDifference(p, this.getPosition());
 		Piece p4 = b.getPiece(p);
-		if (p4 != null && p4.color == this.color) {
+		if (p4 != null && p4.getColor() == this.getColor()) {
 			return false;
 		}
 		if (p1.x == 0 || p1.y == 0) {
